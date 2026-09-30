@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:clamp(16px,3vw,40px);padding-block:28px 48px}
-.wrap{max-width:1280px;margin:0 auto;display:grid;gap:22px}
+.wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -64,7 +64,33 @@ header p{margin:6px 0 0;color:var(--muted)}
 
 /* principal */
 .main{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:22px;align-items:start}
-@media (max-width:860px){.main{grid-template-columns:1fr}}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){
+  body{font-size:15px;padding-block:18px 36px}
+  header{align-items:flex-start}
+  .count{padding:8px 12px}
+  .count b{font-size:24px}
+  .strip{padding:12px}
+  .days,.months{min-width:0}
+  .days{gap:1px;grid-template-columns:repeat(61,minmax(0,1fr))}
+  .day{height:30px;border-radius:2px}
+  .day.travel::after{width:3px;height:3px;margin-left:-1.5px}
+  .legend{font-size:12px;gap:4px 12px}
+  .legend i{width:16px}
+  .mapcard svg{max-height:none}
+  .city text{font-size:32px;stroke-width:8px}
+  .city text.d{font-size:22px}
+  .pin circle{r:24px}
+  .pin text{font-size:22px;transform:translateY(2px)}
+  .filters{gap:6px}
+  .filters .label{width:100%}
+  .chip{padding:6px 12px;font-size:13.5px}
+  .what h3{font-size:17px}
+  .move{font-size:13px}
+  .move .mono{overflow-wrap:anywhere}
+  .box{padding:16px}
+  .bottom{grid-template-columns:minmax(0,1fr)}
+}
 .mapcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
 @media (max-width:860px){.mapcard{position:static}}
 .mapcard svg{display:block;width:100%;height:auto;max-height:82vh}
